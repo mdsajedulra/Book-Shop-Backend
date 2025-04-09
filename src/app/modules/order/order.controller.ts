@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { StatusCodes } from "http-status-codes";
 import catchAsync from "../../utils/catchAsync";
 import sendResponse from "../../utils/sendResponse";
 import { orderServices } from "./order.service";
 
 
-const createOrder = catchAsync(async(req, res , next)=>{
+const createOrder = catchAsync(async(req, res , _next)=>{
     const payload = req.body;
     const result = await orderServices.createOrder(payload, req.ip!);
     sendResponse(res, {
@@ -15,7 +16,7 @@ const createOrder = catchAsync(async(req, res , next)=>{
     });
 })
 
-const getOrders = catchAsync(async(req, res , next)=>{
+const getOrders = catchAsync(async(_req, res , _next)=>{
     const result = await orderServices.getOrder();
     sendResponse(res, {
         message: "order fetched successfully",
@@ -27,7 +28,7 @@ const getOrders = catchAsync(async(req, res , next)=>{
 
 // get order by id 
 
-const getOrderById = catchAsync(async(req, res , next)=>{
+const getOrderById = catchAsync(async(req, res , _next)=>{
     const {id} = req.params;
     const result = await orderServices.getOrderById(id);
     sendResponse(res, {
@@ -40,7 +41,7 @@ const getOrderById = catchAsync(async(req, res , next)=>{
 
 // update order by id
 
-const updateOrder = catchAsync(async(req, res , next)=>{
+const updateOrder = catchAsync(async(req, res , _next)=>{
     const {id} = req.params;
     const payload = req.body;
     const result = await orderServices.updateOrder(id, payload);
@@ -54,7 +55,7 @@ const updateOrder = catchAsync(async(req, res , next)=>{
 
 // delete order by id
 
-const deleteOrder = catchAsync(async(req, res , next)=>{
+const deleteOrder = catchAsync(async(req, res , _next)=>{
     const {id} = req.params;
     const result = await orderServices.deleteOrder(id);
     sendResponse(res, {
