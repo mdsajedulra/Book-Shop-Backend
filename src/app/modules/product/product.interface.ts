@@ -1,4 +1,9 @@
-type Category = 'Fiction' | 'Science' | 'SelfDevelopment' | 'Poetry' | 'Religious';
+type Category =
+  | 'Fiction'
+  | 'Science'
+  | 'SelfDevelopment'
+  | 'Poetry'
+  | 'Religious';
 
 export interface IProduct {
   title: string;

@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
-import { ProductModel } from "../product/product.model";
-import { IOrder } from "./order.interface";
-import { orderModel } from "./order.model";
+import { ProductModel } from '../product/product.model';
+import { IOrder } from './order.interface';
+import { orderModel } from './order.model';
 // import { orderUtils } from "./order.utils";
 
 const createOrder = async (payload: IOrder, client_ip: string) => {
@@ -11,10 +9,10 @@ const createOrder = async (payload: IOrder, client_ip: string) => {
   const product = await ProductModel.findById(productId);
   // console.log(product);
   if (!product) {
-    throw new Error("Product not found");
+    throw new Error('Product not found');
   }
   if (product.quantity < quantity) {
-    throw new Error("Stock not available");
+    throw new Error('Stock not available');
   }
   product.quantity -= quantity;
   console.log(product);
@@ -33,19 +31,21 @@ const createOrder = async (payload: IOrder, client_ip: string) => {
   });
 
   // shurjo pay payment integration
+
   // const shurjopayPayload = {
   //   amount: totalPrice,
   //   order_id: order._id,
   //   currency: "BDT",
   //   customer_name: "Md Sajedul Islam",
-  //   customer_address:"Mohakhali",
+  //   customer_address: "Mohakhali",
   //   customer_email: "mdsajedulra@gmail.com",
-  //   customer_phone:   "01780941957",
+  //   customer_phone: "01780941957",
   //   customer_city: "Natore",
   //   client_ip,
+  // };
+  // const payment = await orderUtils.makePayment(shurjopayPayload);
 
-  // }
-  // const payment =  await orderUtils.makePayment(shurjopayPayload)
+  // console.log(payment);
 
   return { order };
 };

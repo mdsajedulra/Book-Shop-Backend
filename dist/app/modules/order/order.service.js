@@ -10,8 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.orderServices = void 0;
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
 const product_model_1 = require("../product/product.model");
 const order_model_1 = require("./order.model");
 // import { orderUtils } from "./order.utils";
@@ -45,13 +43,14 @@ const createOrder = (payload, client_ip) => __awaiter(void 0, void 0, void 0, fu
     //   order_id: order._id,
     //   currency: "BDT",
     //   customer_name: "Md Sajedul Islam",
-    //   customer_address:"Mohakhali",
+    //   customer_address: "Mohakhali",
     //   customer_email: "mdsajedulra@gmail.com",
-    //   customer_phone:   "01780941957",
+    //   customer_phone: "01780941957",
     //   customer_city: "Natore",
     //   client_ip,
-    // }
-    // const payment =  await orderUtils.makePayment(shurjopayPayload)
+    // };
+    // const payment = await orderUtils.makePayment(shurjopayPayload);
+    // console.log(payment);
     return { order };
 });
 const getOrder = () => __awaiter(void 0, void 0, void 0, function* () {

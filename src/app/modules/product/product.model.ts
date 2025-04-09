@@ -1,5 +1,5 @@
-import mongoose, { Schema } from "mongoose";
-import { IProduct } from "./product.interface";
+import mongoose, { Schema } from 'mongoose';
+import { IProduct } from './product.interface';
 
 const ProductSchema = new Schema<IProduct>(
   {
@@ -8,14 +8,14 @@ const ProductSchema = new Schema<IProduct>(
     price: { type: Number, required: true },
     category: {
       type: String,
-      enum: ["Fiction", "Science", "SelfDevelopment", "Poetry", "Religious"],
+      enum: ['Fiction', 'Science', 'SelfDevelopment', 'Poetry', 'Religious'],
       required: true,
     },
     description: { type: String },
     quantity: { type: Number, required: true },
     inStock: { type: Boolean, required: true },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-export const ProductModel = mongoose.model<IProduct>("Product", ProductSchema);
+export const ProductModel = mongoose.model<IProduct>('Product', ProductSchema);

@@ -1,4 +1,5 @@
 "use strict";
+// /* eslint-disable @typescript-eslint/no-explicit-any */
 // import Shurjopay from "shurjopay";
 // import config from "../../config";
 // const shurjopay = new Shurjopay();
@@ -13,11 +14,11 @@
 // const makePayment = async (paymentPayload: any) => {
 //   const paymentResult = await shurjopay.makePayment(
 //     paymentPayload,
-//     (response) => console.log("this is shurjo pay repsone", response),
-//     (error) => console.log("error from shurjo pay",error)
+//     (response: any) => console.log("this is shurjo pay repsone", response),
+//     (error: any) => console.log("error from shurjo pay", error)
 //   );
-// //   console.log(paymentResult);
-// return paymentResult
+//   //   console.log(paymentResult);
+//   return paymentResult;
 // };
 // export const orderUtils = {
 //   makePayment,
