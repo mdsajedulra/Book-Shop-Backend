@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 import { ProductModel } from "../product/product.model";
 import { IOrder } from "./order.interface";
 import { orderModel } from "./order.model";

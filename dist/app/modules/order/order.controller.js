@@ -13,11 +13,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.orderController = void 0;
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 const http_status_codes_1 = require("http-status-codes");
 const catchAsync_1 = __importDefault(require("../../utils/catchAsync"));
 const sendResponse_1 = __importDefault(require("../../utils/sendResponse"));
 const order_service_1 = require("./order.service");
-const createOrder = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const createOrder = (0, catchAsync_1.default)((req, res, _next) => __awaiter(void 0, void 0, void 0, function* () {
     const payload = req.body;
     const result = yield order_service_1.orderServices.createOrder(payload, req.ip);
     (0, sendResponse_1.default)(res, {
@@ -27,7 +29,7 @@ const createOrder = (0, catchAsync_1.default)((req, res, next) => __awaiter(void
         data: result,
     });
 }));
-const getOrders = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const getOrders = (0, catchAsync_1.default)((_req, res, _next) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield order_service_1.orderServices.getOrder();
     (0, sendResponse_1.default)(res, {
         message: "order fetched successfully",
@@ -37,7 +39,7 @@ const getOrders = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0
     });
 }));
 // get order by id 
-const getOrderById = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const getOrderById = (0, catchAsync_1.default)((req, res, _next) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const result = yield order_service_1.orderServices.getOrderById(id);
     (0, sendResponse_1.default)(res, {
@@ -48,7 +50,7 @@ const getOrderById = (0, catchAsync_1.default)((req, res, next) => __awaiter(voi
     });
 }));
 // update order by id
-const updateOrder = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const updateOrder = (0, catchAsync_1.default)((req, res, _next) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const payload = req.body;
     const result = yield order_service_1.orderServices.updateOrder(id, payload);
@@ -60,7 +62,7 @@ const updateOrder = (0, catchAsync_1.default)((req, res, next) => __awaiter(void
     });
 }));
 // delete order by id
-const deleteOrder = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const deleteOrder = (0, catchAsync_1.default)((req, res, _next) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const result = yield order_service_1.orderServices.deleteOrder(id);
     (0, sendResponse_1.default)(res, {

@@ -3,6 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 const express_1 = require("express");
 const validateRequest_1 = __importDefault(require("../../middlewares/validateRequest"));
 const product_validation_1 = require("./product.validation");
