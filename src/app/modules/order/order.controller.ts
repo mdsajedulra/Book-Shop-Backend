@@ -4,6 +4,7 @@ import { StatusCodes } from 'http-status-codes';
 import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import { orderServices } from './order.service';
+import { verifyToken } from '../auth/auth.utils';
 
 const createOrder = catchAsync(async (req, res, _next) => {
   const payload = req.body;
@@ -20,6 +21,17 @@ const getOrders = catchAsync(async (_req, res, _next) => {
   const result = await orderServices.getOrder();
   sendResponse(res, {
     message: 'order fetched successfully',
+    statudeCode: StatusCodes.OK,
+    success: true,
+    data: result,
+  });
+});
+
+const getOwnOrder = catchAsync(async (req, res, next) => {
+  const { email } = req.user;
+  const result = await orderServices.getOwnOrder(email);
+  sendResponse(res, {
+    message: 'order fetch uccessfully',
     statudeCode: StatusCodes.OK,
     success: true,
     data: result,
@@ -68,6 +80,7 @@ const deleteOrder = catchAsync(async (req, res, _next) => {
 
 export const orderController = {
   createOrder,
+  getOwnOrder,
   getOrders,
   getOrderById,
   updateOrder,

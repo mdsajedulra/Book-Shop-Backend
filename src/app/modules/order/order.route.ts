@@ -15,9 +15,11 @@ orderRoutes.post(
 
 orderRoutes.get('/', auth('admin'), orderController.getOrders);
 
-orderRoutes.get('/:id', orderController.getOrderById);
+orderRoutes.get('/own_order', auth('user'), orderController.getOwnOrder);
 
-orderRoutes.put('/:id', orderController.updateOrder);
+orderRoutes.get('/:id', auth('admin'), orderController.getOrderById);
+
+orderRoutes.put('/:id', auth('admin'), orderController.updateOrder);
 
 orderRoutes.delete('/:id', orderController.deleteOrder);
 

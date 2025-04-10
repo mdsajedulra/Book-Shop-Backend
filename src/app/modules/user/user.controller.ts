@@ -17,6 +17,32 @@ const createUser = catchAsync(async (req, res, next) => {
   });
 });
 
+//get all user only admin
+
+const getAllUser = catchAsync(async (req, res, next) => {
+  const result = await userService.getAllUser();
+  sendResponse(res, {
+    message: 'user get Seccussfully',
+    statudeCode: StatusCodes.OK,
+    success: true,
+    data: result,
+  });
+});
+
+// block user
+
+const blockUser = catchAsync(async (req, res, next) => {
+  const result = await userService.blockUser(req.params.userId);
+  sendResponse(res, {
+    message: 'user block Seccussfully',
+    statudeCode: StatusCodes.OK,
+    success: true,
+    data: result,
+  });
+});
+
 export const userController = {
   createUser,
+  getAllUser,
+  blockUser,
 };

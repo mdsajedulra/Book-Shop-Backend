@@ -14,7 +14,7 @@ app.use('/api', router);
 app.get('/', (req: Request, res: Response) => {
   res
     .status(200)
-    .json({ sucess: true, message: 'Welcome to the Stationary Shop Api' });
+    .json({ success: true, message: 'Welcome to the BookShop API' });
 });
 
 // unknown route error handle

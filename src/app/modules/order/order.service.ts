@@ -55,6 +55,11 @@ const getOrder = async () => {
   return result;
 };
 
+const getOwnOrder = async (email: string) => {
+  const result = await orderModel.find({ email: email });
+  return result;
+};
+
 const getOrderById = async (id: string) => {
   const result = await orderModel.findById(id);
   return result;
@@ -74,6 +79,7 @@ const deleteOrder = async (id: string) => {
 
 export const orderServices = {
   createOrder,
+  getOwnOrder,
   getOrder,
   getOrderById,
   updateOrder,
