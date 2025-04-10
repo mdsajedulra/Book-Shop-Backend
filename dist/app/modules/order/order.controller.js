@@ -21,7 +21,7 @@ const sendResponse_1 = __importDefault(require("../../utils/sendResponse"));
 const order_service_1 = require("./order.service");
 const createOrder = (0, catchAsync_1.default)((req, res, _next) => __awaiter(void 0, void 0, void 0, function* () {
     const payload = req.body;
-    const result = yield order_service_1.orderServices.createOrder(payload, req.ip);
+    const result = yield order_service_1.orderServices.createOrder(payload, req.ip, req.user);
     (0, sendResponse_1.default)(res, {
         message: 'order created successfully',
         statudeCode: http_status_codes_1.StatusCodes.CREATED,

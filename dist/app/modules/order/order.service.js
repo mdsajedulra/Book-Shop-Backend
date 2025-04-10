@@ -8,14 +8,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.orderServices = void 0;
 const product_model_1 = require("../product/product.model");
 const order_model_1 = require("./order.model");
-// import { orderUtils } from "./order.utils";
-const createOrder = (payload, client_ip) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(payload);
-    const { email, productId, quantity } = payload;
+const user_model_1 = __importDefault(require("../user/user.model"));
+const order_utils_1 = require("./order.utils");
+const createOrder = (payload, client_ip, signUser) => __awaiter(void 0, void 0, void 0, function* () {
+    const { productId, quantity } = payload;
+    const user = yield user_model_1.default.findOne({ email: signUser.email });
+    const { email, name } = user;
+    // console.log(email);
     const product = yield product_model_1.ProductModel.findById(productId);
     // console.log(product);
     if (!product) {
@@ -25,7 +31,7 @@ const createOrder = (payload, client_ip) => __awaiter(void 0, void 0, void 0, fu
         throw new Error('Stock not available');
     }
     product.quantity -= quantity;
-    console.log(product);
+    // console.log(product);
     if (product.quantity === 0) {
         product.inStock = false;
     }
@@ -38,19 +44,19 @@ const createOrder = (payload, client_ip) => __awaiter(void 0, void 0, void 0, fu
         quantity,
     });
     // shurjo pay payment integration
-    // const shurjopayPayload = {
-    //   amount: totalPrice,
-    //   order_id: order._id,
-    //   currency: "BDT",
-    //   customer_name: "Md Sajedul Islam",
-    //   customer_address: "Mohakhali",
-    //   customer_email: "mdsajedulra@gmail.com",
-    //   customer_phone: "01780941957",
-    //   customer_city: "Natore",
-    //   client_ip,
-    // };
-    // const payment = await orderUtils.makePayment(shurjopayPayload);
-    // console.log(payment);
+    const shurjopayPayload = {
+        amount: totalPrice,
+        order_id: order._id,
+        currency: 'BDT',
+        customer_name: name,
+        customer_address: 'Mohakhali',
+        customer_email: email,
+        customer_phone: '01780941957',
+        customer_city: 'Natore',
+        client_ip,
+    };
+    yield order_utils_1.orderUtils.makePayment(shurjopayPayload);
+    console.log(shurjopayPayload);
     return { order };
 });
 const getOrder = () => __awaiter(void 0, void 0, void 0, function* () {

@@ -4,7 +4,7 @@ import { IOrder } from './order.interface';
 import { orderModel } from './order.model';
 import User from '../user/user.model';
 import { IUser } from '../user/user.interface';
-// import { orderUtils } from "./order.utils";
+import { orderUtils } from "./order.utils";
 
 const createOrder = async (
   payload: IOrder,
@@ -55,16 +55,12 @@ const createOrder = async (
     customer_city: 'Natore',
     client_ip,
   };
-  // const payment = await orderUtils.makePayment(shurjopayPayload);
+  await orderUtils.makePayment(shurjopayPayload);
 
   console.log(shurjopayPayload);
 
   return { order };
 };
-
-
-
-
 
 const getOrder = async () => {
   const result = await orderModel.find();

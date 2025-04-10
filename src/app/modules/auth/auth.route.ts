@@ -13,7 +13,7 @@ authrouter.post(
   authController.register,
 );
 
-authrouter.get(
+authrouter.post(
   '/login',
   validateRequest(authValidation.loginValidationSchema),
   authController.login,

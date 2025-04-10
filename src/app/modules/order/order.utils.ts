@@ -11,18 +11,18 @@ shurjopay.config(
   config.sp.sp_prefix!,
   config.sp.sp_return_url!,
 );
-console.log(shurjopay);
+console.log("shurjopay return url", config.sp.sp_return_url);
 
-// const makePayment = async (paymentPayload: any) => {
-//   const paymentResult = await shurjopay.makePayment(
-//     paymentPayload,
-//     (response: any) => console.log('this is shurjo pay repsone', response),
-//     (error: any) => console.log('error from shurjo pay', error),
-//   );
-//   //   console.log(paymentResult);
-//   return paymentResult;
-// };
+const makePayment = async (paymentPayload: any) => {
+  const paymentResult = await shurjopay.makePayment(
+    paymentPayload,
+    (response: any) => console.log('this is shurjo pay repsone', response),
+    (error: any) => console.log('error from shurjo pay', error),
+  );
+  //   console.log(paymentResult);
+  return paymentResult;
+};
 
-// export const orderUtils = {
-//   makePayment,
-// };
+export const orderUtils = {
+  makePayment,
+};
