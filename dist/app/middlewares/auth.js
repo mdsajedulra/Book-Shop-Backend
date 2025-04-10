@@ -19,20 +19,20 @@ const auth = (...requiredRole) => (0, catchAsync_1.default)((req, res, next) => 
     const authorization = req.headers.authorization;
     // console.log(authorization?.split(" "));
     if (!authorization) {
-        throw new Error("Authorization Required");
+        throw new Error('Authorization Required');
     }
-    const [Bearer, token] = authorization.split(" ");
-    if (Bearer !== "Bearer" || !token) {
-        throw new Error("You are not Authorized!");
+    const [Bearer, token] = authorization.split(' ');
+    if (Bearer !== 'Bearer' || !token) {
+        throw new Error('You are not Authorized!');
     }
-    const decoded = jsonwebtoken_1.default.verify(token, "secret");
+    const decoded = jsonwebtoken_1.default.verify(token, 'secret');
     const { email, role } = decoded;
     const user = yield user_model_1.default.findOne({ email });
     if (!user) {
-        throw new Error("User not found");
+        throw new Error('User not found');
     }
     if (requiredRole && !requiredRole.includes(role)) {
-        throw new Error("you are not Authorized");
+        throw new Error('you are not Authorized');
     }
     req.user = decoded;
     // console.log("nosto token", token);

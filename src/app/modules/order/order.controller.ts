@@ -8,7 +8,7 @@ import { verifyToken } from '../auth/auth.utils';
 
 const createOrder = catchAsync(async (req, res, _next) => {
   const payload = req.body;
-  const result = await orderServices.createOrder(payload, req.ip!);
+  const result = await orderServices.createOrder(payload, req.ip!, req.user);
   sendResponse(res, {
     message: 'order created successfully',
     statudeCode: StatusCodes.CREATED,

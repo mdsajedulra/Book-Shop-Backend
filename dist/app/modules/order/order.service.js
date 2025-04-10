@@ -19,10 +19,10 @@ const createOrder = (payload, client_ip) => __awaiter(void 0, void 0, void 0, fu
     const product = yield product_model_1.ProductModel.findById(productId);
     // console.log(product);
     if (!product) {
-        throw new Error("Product not found");
+        throw new Error('Product not found');
     }
     if (product.quantity < quantity) {
-        throw new Error("Stock not available");
+        throw new Error('Stock not available');
     }
     product.quantity -= quantity;
     console.log(product);
@@ -57,6 +57,10 @@ const getOrder = () => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield order_model_1.orderModel.find();
     return result;
 });
+const getOwnOrder = (email) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield order_model_1.orderModel.find({ email: email });
+    return result;
+});
 const getOrderById = (id) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield order_model_1.orderModel.findById(id);
     return result;
@@ -73,6 +77,7 @@ const deleteOrder = (id) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.orderServices = {
     createOrder,
+    getOwnOrder,
     getOrder,
     getOrderById,
     updateOrder,

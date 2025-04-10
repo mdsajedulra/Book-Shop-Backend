@@ -11,21 +11,21 @@ const order_route_1 = __importDefault(require("../modules/order/order.route"));
 const router = (0, express_1.Router)();
 const moduleRoutes = [
     {
-        path: "/user",
+        path: '/user',
         route: user_route_1.default,
     },
     {
-        path: "/auth",
+        path: '/auth',
         route: auth_route_1.default,
     },
     {
-        path: "/product",
+        path: '/product',
         route: product_route_1.default,
     },
     {
-        path: "/order",
+        path: '/order',
         route: order_route_1.default,
-    }
+    },
 ];
 moduleRoutes.forEach((route) => router.use(route.path, route.route));
 exports.default = router;

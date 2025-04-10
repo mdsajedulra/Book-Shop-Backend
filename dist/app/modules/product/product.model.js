@@ -41,11 +41,11 @@ const ProductSchema = new mongoose_1.Schema({
     price: { type: Number, required: true },
     category: {
         type: String,
-        enum: ["Fiction", "Science", "SelfDevelopment", "Poetry", "Religious"],
+        enum: ['Fiction', 'Science', 'SelfDevelopment', 'Poetry', 'Religious'],
         required: true,
     },
     description: { type: String },
     quantity: { type: Number, required: true },
     inStock: { type: Boolean, required: true },
 }, { timestamps: true });
-exports.ProductModel = mongoose_1.default.model("Product", ProductSchema);
+exports.ProductModel = mongoose_1.default.model('Product', ProductSchema);

@@ -5,7 +5,7 @@ const handleZodError = (err, res) => {
     res.status(400).json({
         status: false,
         message: err.errors,
-        error: err
+        error: err,
     });
 };
 exports.handleZodError = handleZodError;

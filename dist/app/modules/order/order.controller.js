@@ -23,7 +23,7 @@ const createOrder = (0, catchAsync_1.default)((req, res, _next) => __awaiter(voi
     const payload = req.body;
     const result = yield order_service_1.orderServices.createOrder(payload, req.ip);
     (0, sendResponse_1.default)(res, {
-        message: "order created successfully",
+        message: 'order created successfully',
         statudeCode: http_status_codes_1.StatusCodes.CREATED,
         success: true,
         data: result,
@@ -32,18 +32,28 @@ const createOrder = (0, catchAsync_1.default)((req, res, _next) => __awaiter(voi
 const getOrders = (0, catchAsync_1.default)((_req, res, _next) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield order_service_1.orderServices.getOrder();
     (0, sendResponse_1.default)(res, {
-        message: "order fetched successfully",
+        message: 'order fetched successfully',
         statudeCode: http_status_codes_1.StatusCodes.OK,
         success: true,
         data: result,
     });
 }));
-// get order by id 
+const getOwnOrder = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const { email } = req.user;
+    const result = yield order_service_1.orderServices.getOwnOrder(email);
+    (0, sendResponse_1.default)(res, {
+        message: 'order fetch uccessfully',
+        statudeCode: http_status_codes_1.StatusCodes.OK,
+        success: true,
+        data: result,
+    });
+}));
+// get order by id
 const getOrderById = (0, catchAsync_1.default)((req, res, _next) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const result = yield order_service_1.orderServices.getOrderById(id);
     (0, sendResponse_1.default)(res, {
-        message: "order fetched successfully",
+        message: 'order fetched successfully',
         statudeCode: http_status_codes_1.StatusCodes.OK,
         success: true,
         data: result,
@@ -55,7 +65,7 @@ const updateOrder = (0, catchAsync_1.default)((req, res, _next) => __awaiter(voi
     const payload = req.body;
     const result = yield order_service_1.orderServices.updateOrder(id, payload);
     (0, sendResponse_1.default)(res, {
-        message: "order updated successfully",
+        message: 'order updated successfully',
         statudeCode: http_status_codes_1.StatusCodes.OK,
         success: true,
         data: result,
@@ -66,7 +76,7 @@ const deleteOrder = (0, catchAsync_1.default)((req, res, _next) => __awaiter(voi
     const { id } = req.params;
     const result = yield order_service_1.orderServices.deleteOrder(id);
     (0, sendResponse_1.default)(res, {
-        message: "order deleted successfully",
+        message: 'order deleted successfully',
         statudeCode: http_status_codes_1.StatusCodes.OK,
         success: true,
         data: result,
@@ -74,8 +84,9 @@ const deleteOrder = (0, catchAsync_1.default)((req, res, _next) => __awaiter(voi
 }));
 exports.orderController = {
     createOrder,
+    getOwnOrder,
     getOrders,
     getOrderById,
     updateOrder,
-    deleteOrder
+    deleteOrder,
 };

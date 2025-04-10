@@ -1,11 +1,23 @@
+import { JwtPayload } from 'jsonwebtoken';
 import { ProductModel } from '../product/product.model';
 import { IOrder } from './order.interface';
 import { orderModel } from './order.model';
+import User from '../user/user.model';
+import { IUser } from '../user/user.interface';
 // import { orderUtils } from "./order.utils";
 
-const createOrder = async (payload: IOrder, client_ip: string) => {
-  console.log(payload);
-  const { email, productId, quantity } = payload;
+const createOrder = async (
+  payload: IOrder,
+  client_ip: string,
+  signUser: JwtPayload,
+) => {
+  const { productId, quantity } = payload;
+
+  const user = await User.findOne({ email: signUser.email });
+
+  const { email, name } = user as IUser;
+  // console.log(email);
+
   const product = await ProductModel.findById(productId);
   // console.log(product);
   if (!product) {
@@ -15,7 +27,7 @@ const createOrder = async (payload: IOrder, client_ip: string) => {
     throw new Error('Stock not available');
   }
   product.quantity -= quantity;
-  console.log(product);
+  // console.log(product);
   if (product.quantity === 0) {
     product.inStock = false;
   }
@@ -32,23 +44,27 @@ const createOrder = async (payload: IOrder, client_ip: string) => {
 
   // shurjo pay payment integration
 
-  // const shurjopayPayload = {
-  //   amount: totalPrice,
-  //   order_id: order._id,
-  //   currency: "BDT",
-  //   customer_name: "Md Sajedul Islam",
-  //   customer_address: "Mohakhali",
-  //   customer_email: "mdsajedulra@gmail.com",
-  //   customer_phone: "01780941957",
-  //   customer_city: "Natore",
-  //   client_ip,
-  // };
+  const shurjopayPayload = {
+    amount: totalPrice,
+    order_id: order._id,
+    currency: 'BDT',
+    customer_name: name,
+    customer_address: 'Mohakhali',
+    customer_email: email,
+    customer_phone: '01780941957',
+    customer_city: 'Natore',
+    client_ip,
+  };
   // const payment = await orderUtils.makePayment(shurjopayPayload);
 
-  // console.log(payment);
+  console.log(shurjopayPayload);
 
   return { order };
 };
+
+
+
+
 
 const getOrder = async () => {
   const result = await orderModel.find();

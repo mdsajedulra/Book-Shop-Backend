@@ -11,7 +11,7 @@ const handleDuplicateError_1 = require("../helpers/handleDuplicateError");
 const handleGenericError_1 = require("../helpers/handleGenericError");
 const handleZodError_1 = require("../helpers/handleZodError");
 const globalErrorHandler = (err, req, res, next) => {
-    if (err.name && err.name === "ZodError") {
+    if (err.name && err.name === 'ZodError') {
         (0, handleZodError_1.handleZodError)(err, res);
     }
     else if (err instanceof mongoose_1.default.Error.CastError) {

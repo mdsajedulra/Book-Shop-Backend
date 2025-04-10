@@ -1,5 +1,5 @@
 export interface IOrder {
-  email: string;
+  email?: string;
   productId: string;
   quantity: number;
   totalPrice: number;

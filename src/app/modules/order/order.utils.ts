@@ -13,16 +13,16 @@ shurjopay.config(
 );
 console.log(shurjopay);
 
-const makePayment = async (paymentPayload: any) => {
-  const paymentResult = await shurjopay.makePayment(
-    paymentPayload,
-    (response: any) => console.log('this is shurjo pay repsone', response),
-    (error: any) => console.log('error from shurjo pay', error),
-  );
-  //   console.log(paymentResult);
-  return paymentResult;
-};
+// const makePayment = async (paymentPayload: any) => {
+//   const paymentResult = await shurjopay.makePayment(
+//     paymentPayload,
+//     (response: any) => console.log('this is shurjo pay repsone', response),
+//     (error: any) => console.log('error from shurjo pay', error),
+//   );
+//   //   console.log(paymentResult);
+//   return paymentResult;
+// };
 
-export const orderUtils = {
-  makePayment,
-};
+// export const orderUtils = {
+//   makePayment,
+// };

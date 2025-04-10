@@ -53,11 +53,11 @@ const UserSchema = new mongoose_1.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true, select: false },
-    role: { type: String, enum: ["admin", "user"], default: "user" },
+    role: { type: String, enum: ['admin', 'user'], default: 'user' },
     isBlocked: { type: Boolean, default: false },
 }, { timestamps: true });
 // password hash pre hook
-UserSchema.pre("save", function (next) {
+UserSchema.pre('save', function (next) {
     return __awaiter(this, void 0, void 0, function* () {
         const user = this;
         user.password = yield bcrypt_1.default.hash(user.password, Number(process.env.bcrypt_salt_rounds));
@@ -65,10 +65,10 @@ UserSchema.pre("save", function (next) {
     });
 });
 // return document password empty string define
-UserSchema.post("save", function (doc, next) {
-    doc.password = "";
+UserSchema.post('save', function (doc, next) {
+    doc.password = '';
     next();
 });
 // export model
-const User = mongoose_1.default.model("User", UserSchema);
+const User = mongoose_1.default.model('User', UserSchema);
 exports.default = User;

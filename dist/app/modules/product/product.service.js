@@ -18,20 +18,27 @@ const createProduct = (payload) => __awaiter(void 0, void 0, void 0, function* (
 // get product
 const getProduct = (query) => __awaiter(void 0, void 0, void 0, function* () {
     const queryObj = Object.assign({}, query);
-    console.log("main query obj", query);
-    console.log("Copy query obj", queryObj);
-    let searchTerm = "";
+    console.log('main query obj', query);
+    console.log('Copy query obj', queryObj);
+    let searchTerm = '';
     if (query === null || query === void 0 ? void 0 : query.searchTerm) {
         searchTerm = query === null || query === void 0 ? void 0 : query.searchTerm;
     }
-    const searchableFileds = ["title", "author", "category"];
+    const searchableFileds = ['title', 'author', 'category'];
     const searchQuery = product_model_1.ProductModel.find({
         $or: searchableFileds.map((field) => ({
-            [field]: { $regex: searchTerm, $options: "i" },
+            [field]: { $regex: searchTerm, $options: 'i' },
         })),
     });
-    // filtering   
-    const excludeFields = ["searchTerm", "sort", "limit", "page", "minPrice", "maxPrice"];
+    // filtering
+    const excludeFields = [
+        'searchTerm',
+        'sort',
+        'limit',
+        'page',
+        'minPrice',
+        'maxPrice',
+    ];
     excludeFields.forEach((el) => delete queryObj[el]);
     console.log(queryObj);
     const filterQuery = searchQuery.find(queryObj);
@@ -43,10 +50,10 @@ const getProduct = (query) => __awaiter(void 0, void 0, void 0, function* () {
         maxPrice = Number(query.maxPrice);
     }
     const priceFilterQuery = filterQuery.find({
-        price: { $gte: minPrice, $lte: maxPrice }
+        price: { $gte: minPrice, $lte: maxPrice },
     });
     // sort query
-    let sort = "-createdAt";
+    let sort = '-createdAt';
     if (query.sort) {
         sort = query.sort;
     }

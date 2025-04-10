@@ -23,12 +23,34 @@ const createUser = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 
     const payload = req.body;
     const result = yield user_service_1.userService.createUser(payload);
     (0, sendResponse_1.default)(res, {
-        message: "user create Seccussfully",
+        message: 'user create Seccussfully',
         statudeCode: http_status_codes_1.StatusCodes.CREATED,
+        success: true,
+        data: result,
+    });
+}));
+//get all user only admin
+const getAllUser = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield user_service_1.userService.getAllUser();
+    (0, sendResponse_1.default)(res, {
+        message: 'user get Seccussfully',
+        statudeCode: http_status_codes_1.StatusCodes.OK,
+        success: true,
+        data: result,
+    });
+}));
+// block user
+const blockUser = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield user_service_1.userService.blockUser(req.params.userId);
+    (0, sendResponse_1.default)(res, {
+        message: 'user block Seccussfully',
+        statudeCode: http_status_codes_1.StatusCodes.OK,
         success: true,
         data: result,
     });
 }));
 exports.userController = {
     createUser,
+    getAllUser,
+    blockUser,
 };

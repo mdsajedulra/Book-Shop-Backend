@@ -18,6 +18,16 @@ const createUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield user_model_1.default.create(payload);
     return result;
 });
+const getAllUser = () => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield user_model_1.default.find();
+    return result;
+});
+// block user
+const blockUser = (userId) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield user_model_1.default.findOneAndUpdate({ _id: userId }, { isBlocked: true });
+});
 exports.userService = {
     createUser,
+    getAllUser,
+    blockUser,
 };

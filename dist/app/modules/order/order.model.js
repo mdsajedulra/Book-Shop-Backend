@@ -39,6 +39,6 @@ const orderSchema = new mongoose_1.Schema({
     email: { type: String, required: true },
     productId: { type: String, required: true },
     quantity: { type: Number, required: true },
-    totalPrice: { type: Number, required: true }
+    totalPrice: { type: Number, required: true },
 }, { timestamps: true });
-exports.orderModel = mongoose_1.default.model("Order", orderSchema);
+exports.orderModel = mongoose_1.default.model('Order', orderSchema);
