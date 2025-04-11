@@ -6,14 +6,18 @@ import auth from '../../middlewares/auth';
 
 const orderRoutes = Router();
 
+
+orderRoutes.get('/verify', orderController.verifyPayment);
+
 orderRoutes.post(
   '/',
-  auth('user'),
+  auth('user', 'admin'),
   validateRequest(orderValidationSchema),
   orderController.createOrder,
 );
 
 orderRoutes.get('/', auth('admin'), orderController.getOrders);
+
 
 orderRoutes.get('/own_order', auth('user'), orderController.getOwnOrder);
 

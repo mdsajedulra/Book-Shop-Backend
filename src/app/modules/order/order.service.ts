@@ -56,11 +56,50 @@ const createOrder = async (
     client_ip,
   };
 
-  const payment = await orderUtils.makePayment(shurjopayPayload);
+  const payment = await orderUtils.makePaymentAsync(shurjopayPayload);
 
-  // console.log(shurjopayPayload);
+  const updateOrder = await orderModel.findByIdAndUpdate(
+    order._id,
+    {
+      transaction: {
+        id: payment.sp_order_id,
+        transactionStatus: payment.transactionStatus,
+      },
+    },
+    { new: true },
+  )!;
 
-  return { order, payment };
+
+
+  return payment.checkout_url ;
+};
+
+const verifyPayment = async (order_id: string) => {
+  const verifiedPayment = await orderUtils.verifyPaymentAsync(order_id);
+  if (verifiedPayment.length) {
+    await orderModel.findOneAndUpdate(
+      {
+        'transaction.id': order_id,
+      },
+      {
+        'transaction.transectionStatus': verifiedPayment[0].transaction_status,
+        'transaction.bank_status': verifiedPayment[0].bank_status,
+        'transaction.sp_code': verifiedPayment[0].sp_code,
+        'transaction.sp_message': verifiedPayment[0].sp_message,
+        'transaction.method': verifiedPayment[0].method,
+        'transaction.date_time': verifiedPayment[0].date_time,
+        status:
+          verifiedPayment[0].bank_status == 'Success'
+            ? 'Paid'
+            : verifiedPayment[0].bank_status == 'Failed'
+              ? 'Pending'
+              : verifiedPayment[0].bank_status == 'Cancel'
+                ? 'Cancelled'
+                : '',
+      },
+    );
+  }
+  return verifiedPayment;
 };
 
 const getOrder = async () => {
@@ -91,6 +130,7 @@ const deleteOrder = async (id: string) => {
 };
 
 export const orderServices = {
+  verifyPayment,
   createOrder,
   getOwnOrder,
   getOrder,

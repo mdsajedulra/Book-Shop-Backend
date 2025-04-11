@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Shurjopay from 'shurjopay';
+import Shurjopay, { PaymentResponse, VerificationResponse } from 'shurjopay';
 import config from '../../config';
 
 const shurjopay = new Shurjopay();
@@ -24,7 +24,7 @@ shurjopay.config(
 // shurjopay.credentials.root_url = config.sp.sp_endpoint!;
 // shurjopay.credentials.return_url = config.sp.sp_return_url!;
 
-const makePayment = async (paymentPayload: any) => {
+const makePaymentAsync = async (paymentPayload: any):Promise<PaymentResponse> => {
   return new Promise((resolve, reject) => {
     shurjopay.makePayment(
       paymentPayload,
@@ -45,7 +45,16 @@ const makePayment = async (paymentPayload: any) => {
   // // console.log('paymentResult', paymentResult);
   // return paymentResult;
 };
-
+const verifyPaymentAsync = (order_id: string) :Promise<VerificationResponse[]>=> {
+  return new Promise((resolve, reject) => {
+    shurjopay.verifyPayment(
+      order_id,
+      (response) => resolve(response),
+      (error) => reject(error),
+    );
+  });
+};
 export const orderUtils = {
-  makePayment,
+  makePaymentAsync,
+  verifyPaymentAsync
 };
