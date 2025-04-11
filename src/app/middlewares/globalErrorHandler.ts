@@ -6,6 +6,7 @@ import { handleValidationError } from '../helpers/handleValidationError';
 import { handleDuplicateError } from '../helpers/handleDuplicateError';
 import { handleGenericError } from '../helpers/handleGenericError';
 import { handleZodError } from '../helpers/handleZodError';
+import { StatusCodes } from 'http-status-codes';
 
 export const globalErrorHandler = (
   err: any,
@@ -20,6 +21,13 @@ export const globalErrorHandler = (
   } else if (err instanceof mongoose.Error.ValidationError) {
     handleValidationError(err, res);
   } else if (err.code && err.code === 11000) {
+    if (err.code === 11000 && err.keyPattern?.email) {
+      res.status(StatusCodes.CONFLICT).json({
+        status: false,
+        message: 'Email is already registered',
+        error: err,
+      });
+    }
     handleDuplicateError(err, res);
   } else if (err instanceof Error) {
     handleGenericError(err, res);
