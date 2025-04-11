@@ -29,6 +29,16 @@ const createOrder = (0, catchAsync_1.default)((req, res, _next) => __awaiter(voi
         data: result,
     });
 }));
+const verifyPayment = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    // console.log(req.query);
+    const order = yield order_service_1.orderServices.verifyPayment(req.query.order_id);
+    (0, sendResponse_1.default)(res, {
+        message: 'Order verified successfully',
+        statudeCode: http_status_codes_1.StatusCodes.CREATED,
+        success: true,
+        data: order,
+    });
+}));
 const getOrders = (0, catchAsync_1.default)((_req, res, _next) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield order_service_1.orderServices.getOrder();
     (0, sendResponse_1.default)(res, {
@@ -83,6 +93,7 @@ const deleteOrder = (0, catchAsync_1.default)((req, res, _next) => __awaiter(voi
     });
 }));
 exports.orderController = {
+    verifyPayment,
     createOrder,
     getOwnOrder,
     getOrders,

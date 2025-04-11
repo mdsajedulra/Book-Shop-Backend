@@ -6,14 +6,17 @@ import validateRequest from '../../middlewares/validateRequest';
 import { ProductValidationSchema } from './product.validation';
 import { productController } from './product.controller';
 import auth from '../../middlewares/auth';
+import multer from 'multer';
 
 const productRoute = Router();
+const upload = multer()
 
 //post to create product
 productRoute.post(
   '/',
-  validateRequest(ProductValidationSchema),
-  auth('admin'),
+  // validateRequest(ProductValidationSchema),
+  // auth('admin'),
+  upload.single('image'),
   productController.createProduct,
 );
 

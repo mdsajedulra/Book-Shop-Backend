@@ -38,6 +38,7 @@ const mongoose_1 = __importStar(require("mongoose"));
 const ProductSchema = new mongoose_1.Schema({
     title: { type: String, required: true },
     author: { type: String, required: true },
+    cover: { type: String, required: true },
     price: { type: Number, required: true },
     category: {
         type: String,

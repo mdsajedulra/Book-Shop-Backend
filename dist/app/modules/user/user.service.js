@@ -25,6 +25,7 @@ const getAllUser = () => __awaiter(void 0, void 0, void 0, function* () {
 // block user
 const blockUser = (userId) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield user_model_1.default.findOneAndUpdate({ _id: userId }, { isBlocked: true });
+    return result;
 });
 exports.userService = {
     createUser,

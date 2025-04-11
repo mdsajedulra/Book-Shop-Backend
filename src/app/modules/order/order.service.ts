@@ -58,7 +58,7 @@ const createOrder = async (
 
   const payment = await orderUtils.makePaymentAsync(shurjopayPayload);
 
-  const updateOrder = await orderModel.findByIdAndUpdate(
+  await orderModel.findByIdAndUpdate(
     order._id,
     {
       transaction: {
@@ -69,9 +69,7 @@ const createOrder = async (
     { new: true },
   )!;
 
-
-
-  return payment.checkout_url ;
+  return payment.checkout_url;
 };
 
 const verifyPayment = async (order_id: string) => {

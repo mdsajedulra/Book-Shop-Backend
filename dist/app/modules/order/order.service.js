@@ -55,9 +55,37 @@ const createOrder = (payload, client_ip, signUser) => __awaiter(void 0, void 0, 
         customer_city: 'Natore',
         client_ip,
     };
-    yield order_utils_1.orderUtils.makePayment(shurjopayPayload);
-    console.log(shurjopayPayload);
-    return { order };
+    const payment = yield order_utils_1.orderUtils.makePaymentAsync(shurjopayPayload);
+    yield order_model_1.orderModel.findByIdAndUpdate(order._id, {
+        transaction: {
+            id: payment.sp_order_id,
+            transactionStatus: payment.transactionStatus,
+        },
+    }, { new: true });
+    return payment.checkout_url;
+});
+const verifyPayment = (order_id) => __awaiter(void 0, void 0, void 0, function* () {
+    const verifiedPayment = yield order_utils_1.orderUtils.verifyPaymentAsync(order_id);
+    if (verifiedPayment.length) {
+        yield order_model_1.orderModel.findOneAndUpdate({
+            'transaction.id': order_id,
+        }, {
+            'transaction.transectionStatus': verifiedPayment[0].transaction_status,
+            'transaction.bank_status': verifiedPayment[0].bank_status,
+            'transaction.sp_code': verifiedPayment[0].sp_code,
+            'transaction.sp_message': verifiedPayment[0].sp_message,
+            'transaction.method': verifiedPayment[0].method,
+            'transaction.date_time': verifiedPayment[0].date_time,
+            status: verifiedPayment[0].bank_status == 'Success'
+                ? 'Paid'
+                : verifiedPayment[0].bank_status == 'Failed'
+                    ? 'Pending'
+                    : verifiedPayment[0].bank_status == 'Cancel'
+                        ? 'Cancelled'
+                        : '',
+        });
+    }
+    return verifiedPayment;
 });
 const getOrder = () => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield order_model_1.orderModel.find();
@@ -82,6 +110,7 @@ const deleteOrder = (id) => __awaiter(void 0, void 0, void 0, function* () {
     return result;
 });
 exports.orderServices = {
+    verifyPayment,
     createOrder,
     getOwnOrder,
     getOrder,

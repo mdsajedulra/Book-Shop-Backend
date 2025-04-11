@@ -17,6 +17,7 @@ const blockUser = async (userId: string) => {
     { _id: userId },
     { isBlocked: true },
   );
+  return result
 };
 
 export const userService = {

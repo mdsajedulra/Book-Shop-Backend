@@ -5,6 +5,7 @@ const zod_1 = require("zod");
 exports.ProductValidationSchema = zod_1.z.object({
     body: zod_1.z.object({
         title: zod_1.z.string(),
+        cover: zod_1.z.string(),
         author: zod_1.z.string(),
         price: zod_1.z.number(),
         category: zod_1.z.enum([

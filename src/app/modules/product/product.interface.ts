@@ -7,6 +7,7 @@ type Category =
 
 export interface IProduct {
   title: string;
+  cover: string;
   author: string;
   price: number;
   category: Category;

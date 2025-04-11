@@ -15,15 +15,39 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.orderUtils = void 0;
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const shurjopay_1 = __importDefault(require("shurjopay"));
-const config_1 = __importDefault(require("../../config"));
 const shurjopay = new shurjopay_1.default();
-shurjopay.config(config_1.default.sp.sp_endpoint, config_1.default.sp.sp_password, config_1.default.sp.sp_username, config_1.default.sp.sp_prefix, config_1.default.sp.sp_return_url);
-console.log("shurjopay return url", config_1.default.sp.sp_return_url);
-const makePayment = (paymentPayload) => __awaiter(void 0, void 0, void 0, function* () {
-    const paymentResult = yield shurjopay.makePayment(paymentPayload, (response) => console.log('this is shurjo pay repsone', response), (error) => console.log('error from shurjo pay', error));
-    //   console.log(paymentResult);
-    return paymentResult;
+// shurjopay.config(
+//   config.sp.sp_endpoint!,
+//   config.sp.sp_password!,
+//   config.sp.sp_username!,
+//   config.sp.sp_prefix!,
+//   config.sp.sp_return_url!,
+// );
+shurjopay.config('https://sandbox.shurjopayment.com', 'sp_sandbox', 'pyyk97hu&6u6', 'SP', 'https://21.academy/');
+// shurjopay.credentials.root_url = config.sp.sp_endpoint!;
+// shurjopay.credentials.return_url = config.sp.sp_return_url!;
+const makePaymentAsync = (paymentPayload) => __awaiter(void 0, void 0, void 0, function* () {
+    return new Promise((resolve, reject) => {
+        shurjopay.makePayment(paymentPayload, (response) => {
+            resolve(response);
+        }, (error) => {
+            reject(error);
+        });
+    });
+    // const paymentResult = await shurjopay.makePayment(
+    //   paymentPayload,
+    //   (response: any) => console.log('this is shurjo pay repsone', response),
+    //   (error: any) => console.log('error from shurjo pay', error),
+    // );
+    // // console.log('paymentResult', paymentResult);
+    // return paymentResult;
 });
+const verifyPaymentAsync = (order_id) => {
+    return new Promise((resolve, reject) => {
+        shurjopay.verifyPayment(order_id, (response) => resolve(response), (error) => reject(error));
+    });
+};
 exports.orderUtils = {
-    makePayment,
+    makePaymentAsync,
+    verifyPaymentAsync
 };
