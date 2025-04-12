@@ -24,7 +24,12 @@ const getAllUser = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 // block user
 const blockUser = (userId) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield user_model_1.default.findOneAndUpdate({ _id: userId }, { isBlocked: true });
+    const user = yield user_model_1.default.findById(userId);
+    if ((user === null || user === void 0 ? void 0 : user.isBlocked) === true) {
+        const result = yield user_model_1.default.findOneAndUpdate({ _id: userId }, { isBlocked: false }, { new: true });
+        return result;
+    }
+    const result = yield user_model_1.default.findOneAndUpdate({ _id: userId }, { isBlocked: true }, { new: true });
     return result;
 });
 exports.userService = {
