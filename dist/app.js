@@ -12,7 +12,7 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 const allowedOrigins = [
     'http://localhost:5173',
-    'https://book-shop-client-ashy.vercel.app'
+    'https://book-shop-client-3wcm2a99x-asif419s-projects.vercel.app'
 ];
 app.use((0, cors_1.default)({ origin: function (origin, callback) {
         if (!origin || allowedOrigins.includes(origin)) {
