@@ -18,7 +18,7 @@ shurjopay.config(
   'sp_sandbox',
   'pyyk97hu&6u6',
   'SP',
-  'https://21.academy/',
+  'http://localhost:5173/thankyou',
 );
 
 // shurjopay.credentials.root_url = config.sp.sp_endpoint!;

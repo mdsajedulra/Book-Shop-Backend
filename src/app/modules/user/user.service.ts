@@ -13,9 +13,17 @@ const getAllUser = async () => {
 // block user
 
 const blockUser = async (userId: string) => {
+  const user = await User.findById(userId)
+  if(user?.isBlocked=== true){
+    const result = await User.findOneAndUpdate(
+      { _id: userId },
+      { isBlocked: false },{new: true}
+    );
+    return result
+  }
   const result = await User.findOneAndUpdate(
     { _id: userId },
-    { isBlocked: true },
+    { isBlocked: true },{new: true}
   );
   return result
 };

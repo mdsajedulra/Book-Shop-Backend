@@ -96,7 +96,7 @@ const getOwnOrder = (email) => __awaiter(void 0, void 0, void 0, function* () {
     return result;
 });
 const getOrderById = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield order_model_1.orderModel.findById(id);
+    const result = yield order_model_1.orderModel.findById(id, { new: true });
     return result;
 });
 const updateOrder = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
@@ -106,7 +106,7 @@ const updateOrder = (id, payload) => __awaiter(void 0, void 0, void 0, function*
     return result;
 });
 const deleteOrder = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield order_model_1.orderModel.findByIdAndDelete(id);
+    const result = yield order_model_1.orderModel.findByIdAndDelete(id, { new: true });
     return result;
 });
 exports.orderServices = {

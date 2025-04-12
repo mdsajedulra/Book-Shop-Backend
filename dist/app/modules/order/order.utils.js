@@ -23,7 +23,7 @@ const shurjopay = new shurjopay_1.default();
 //   config.sp.sp_prefix!,
 //   config.sp.sp_return_url!,
 // );
-shurjopay.config('https://sandbox.shurjopayment.com', 'sp_sandbox', 'pyyk97hu&6u6', 'SP', 'https://21.academy/');
+shurjopay.config('https://sandbox.shurjopayment.com', 'sp_sandbox', 'pyyk97hu&6u6', 'SP', 'http://localhost:5173/thankyou');
 // shurjopay.credentials.root_url = config.sp.sp_endpoint!;
 // shurjopay.credentials.return_url = config.sp.sp_return_url!;
 const makePaymentAsync = (paymentPayload) => __awaiter(void 0, void 0, void 0, function* () {

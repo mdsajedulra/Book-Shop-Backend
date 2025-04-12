@@ -111,7 +111,7 @@ const getOwnOrder = async (email: string) => {
 };
 
 const getOrderById = async (id: string) => {
-  const result = await orderModel.findById(id);
+  const result = await orderModel.findById(id ,{new: true});
   return result;
 };
 
@@ -123,7 +123,7 @@ const updateOrder = async (id: string, payload: IOrder) => {
 };
 
 const deleteOrder = async (id: string) => {
-  const result = await orderModel.findByIdAndDelete(id);
+  const result = await orderModel.findByIdAndDelete(id, {new: true});
   return result;
 };
 
