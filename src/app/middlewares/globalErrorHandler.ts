@@ -15,29 +15,29 @@ export const globalErrorHandler = (
   next: NextFunction,
 ) => {
   if (err.name && err.name === 'ZodError') {
-  return  handleZodError(err, res);
+   handleZodError(err, res);
   } else if (err instanceof mongoose.Error.CastError) {
-   return handleCastError(err, res);
+    handleCastError(err, res);
   } else if (err instanceof mongoose.Error.ValidationError) {
-   return handleValidationError(err, res);
+     handleValidationError(err, res);
   } else if (err.code && err.code === 11000) {
     if (err.code === 11000 && err.keyPattern?.email) {
-   return   res.status(StatusCodes.CONFLICT).json({
+       res.status(StatusCodes.CONFLICT).json({
         status: false,
         message: 'Email is already registered',
         error: err,
       });
     }
-  return  handleDuplicateError(err, res);
+     handleDuplicateError(err, res);
   } else if (err instanceof Error) {
-  return  handleGenericError(err, res);
+     handleGenericError(err, res);
   }
-  // next();
-
-  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+  
+  res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
     status: false,
     message: 'Something went wrong',
     error: err,
   });
+  next();
   
 };
