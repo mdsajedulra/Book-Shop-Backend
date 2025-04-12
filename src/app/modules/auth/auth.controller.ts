@@ -9,7 +9,7 @@ const register = catchAsync(async (req, res) => {
   sendResponse(res, {
     data: result,
     message: 'User Registered Successfully',
-    statudeCode: StatusCodes.CREATED,
+    statusCode: StatusCodes.CREATED,
     success: true,
   });
 });
@@ -20,7 +20,7 @@ const login = catchAsync(async (req, res) => {
   sendResponse(res, {
     data: result,
     message: 'User Logged in Successfully',
-    statudeCode: StatusCodes.OK,
+    statusCode: StatusCodes.OK,
     success: true,
   });
 });
@@ -30,7 +30,7 @@ const changePassword = catchAsync(async (req, res) => {
 
   const result = await authService.changePassword(req.user, passwordData);
   sendResponse(res, {
-    statudeCode: StatusCodes.OK,
+    statusCode: StatusCodes.OK,
     success: true,
     message: 'Password is updated succesfully!',
     data: result,

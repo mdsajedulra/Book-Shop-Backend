@@ -11,7 +11,7 @@ const createProduct = catchAsync(async (req, res, _next) => {
 
   sendResponse(res, {
     message: 'product create Seccussfully',
-    statudeCode: StatusCodes.CREATED,
+    statusCode: StatusCodes.CREATED,
     success: true,
     data: result,
   });
@@ -22,7 +22,7 @@ const getProduct = catchAsync(async (req, res, _next) => {
   const result = await productServices.getProduct(searchTerm);
   sendResponse(res, {
     message: 'product fetch Seccussfully',
-    statudeCode: StatusCodes.OK,
+    statusCode: StatusCodes.OK,
     success: true,
     data: result,
   });
@@ -33,7 +33,7 @@ const getSpecificProduct = catchAsync(async (req, res, _next) => {
   const result = await productServices.getSpecificProduct(id);
   sendResponse(res, {
     message: 'product fetch Seccussfully',
-    statudeCode: StatusCodes.OK,
+    statusCode: StatusCodes.OK,
     success: true,
     data: result,
   });
@@ -45,7 +45,7 @@ const deleteProduct = catchAsync(async (req, res, _next) => {
   const result = await productServices.deleteProduct(id);
   sendResponse(res, {
     message: 'product deleted Seccussfully',
-    statudeCode: StatusCodes.OK,
+    statusCode: StatusCodes.OK,
     success: true,
     data: result,
   });
@@ -57,7 +57,7 @@ const updateProduct = catchAsync(async (req, res, _next) => {
   const result = await productServices.updateProduct(id, payload);
   sendResponse(res, {
     message: 'product updated Seccussfully',
-    statudeCode: StatusCodes.OK,
+    statusCode: StatusCodes.OK,
     success: true,
     data: result,
   });

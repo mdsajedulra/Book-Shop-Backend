@@ -24,7 +24,7 @@ const createOrder = (0, catchAsync_1.default)((req, res, _next) => __awaiter(voi
     const result = yield order_service_1.orderServices.createOrder(payload, req.ip, req.user);
     (0, sendResponse_1.default)(res, {
         message: 'order created successfully',
-        statudeCode: http_status_codes_1.StatusCodes.CREATED,
+        statusCode: http_status_codes_1.StatusCodes.CREATED,
         success: true,
         data: result,
     });
@@ -34,7 +34,7 @@ const verifyPayment = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
     const order = yield order_service_1.orderServices.verifyPayment(req.query.order_id);
     (0, sendResponse_1.default)(res, {
         message: 'Order verified successfully',
-        statudeCode: http_status_codes_1.StatusCodes.CREATED,
+        statusCode: http_status_codes_1.StatusCodes.CREATED,
         success: true,
         data: order,
     });
@@ -43,7 +43,7 @@ const getOrders = (0, catchAsync_1.default)((_req, res, _next) => __awaiter(void
     const result = yield order_service_1.orderServices.getOrder();
     (0, sendResponse_1.default)(res, {
         message: 'order fetched successfully',
-        statudeCode: http_status_codes_1.StatusCodes.OK,
+        statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
         data: result,
     });
@@ -53,7 +53,7 @@ const getOwnOrder = (0, catchAsync_1.default)((req, res, next) => __awaiter(void
     const result = yield order_service_1.orderServices.getOwnOrder(email);
     (0, sendResponse_1.default)(res, {
         message: 'order fetch uccessfully',
-        statudeCode: http_status_codes_1.StatusCodes.OK,
+        statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
         data: result,
     });
@@ -64,7 +64,7 @@ const getOrderById = (0, catchAsync_1.default)((req, res, _next) => __awaiter(vo
     const result = yield order_service_1.orderServices.getOrderById(id);
     (0, sendResponse_1.default)(res, {
         message: 'order fetched successfully',
-        statudeCode: http_status_codes_1.StatusCodes.OK,
+        statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
         data: result,
     });
@@ -76,7 +76,7 @@ const updateOrder = (0, catchAsync_1.default)((req, res, _next) => __awaiter(voi
     const result = yield order_service_1.orderServices.updateOrder(id, payload);
     (0, sendResponse_1.default)(res, {
         message: 'order updated successfully',
-        statudeCode: http_status_codes_1.StatusCodes.OK,
+        statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
         data: result,
     });
@@ -87,7 +87,7 @@ const deleteOrder = (0, catchAsync_1.default)((req, res, _next) => __awaiter(voi
     const result = yield order_service_1.orderServices.deleteOrder(id);
     (0, sendResponse_1.default)(res, {
         message: 'order deleted successfully',
-        statudeCode: http_status_codes_1.StatusCodes.OK,
+        statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
         data: result,
     });

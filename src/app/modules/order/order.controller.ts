@@ -11,7 +11,7 @@ const createOrder = catchAsync(async (req, res, _next) => {
   const result = await orderServices.createOrder(payload, req.ip!, req.user);
   sendResponse(res, {
     message: 'order created successfully',
-    statudeCode: StatusCodes.CREATED,
+    statusCode: StatusCodes.CREATED,
     success: true,
     data: result,
   });
@@ -24,7 +24,7 @@ const verifyPayment = catchAsync(async (req, res) => {
   );
   sendResponse(res, {
     message: 'Order verified successfully',
-    statudeCode: StatusCodes.CREATED,
+    statusCode: StatusCodes.CREATED,
     success: true,
     data: order,
   });
@@ -34,7 +34,7 @@ const getOrders = catchAsync(async (_req, res, _next) => {
   const result = await orderServices.getOrder();
   sendResponse(res, {
     message: 'order fetched successfully',
-    statudeCode: StatusCodes.OK,
+    statusCode: StatusCodes.OK,
     success: true,
     data: result,
   });
@@ -45,7 +45,7 @@ const getOwnOrder = catchAsync(async (req, res, next) => {
   const result = await orderServices.getOwnOrder(email);
   sendResponse(res, {
     message: 'order fetch uccessfully',
-    statudeCode: StatusCodes.OK,
+    statusCode: StatusCodes.OK,
     success: true,
     data: result,
   });
@@ -58,7 +58,7 @@ const getOrderById = catchAsync(async (req, res, _next) => {
   const result = await orderServices.getOrderById(id);
   sendResponse(res, {
     message: 'order fetched successfully',
-    statudeCode: StatusCodes.OK,
+    statusCode: StatusCodes.OK,
     success: true,
     data: result,
   });
@@ -72,7 +72,7 @@ const updateOrder = catchAsync(async (req, res, _next) => {
   const result = await orderServices.updateOrder(id, payload);
   sendResponse(res, {
     message: 'order updated successfully',
-    statudeCode: StatusCodes.OK,
+    statusCode: StatusCodes.OK,
     success: true,
     data: result,
   });
@@ -85,7 +85,7 @@ const deleteOrder = catchAsync(async (req, res, _next) => {
   const result = await orderServices.deleteOrder(id);
   sendResponse(res, {
     message: 'order deleted successfully',
-    statudeCode: StatusCodes.OK,
+    statusCode: StatusCodes.OK,
     success: true,
     data: result,
   });

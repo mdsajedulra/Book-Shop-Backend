@@ -34,7 +34,7 @@ const register = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 
     (0, sendResponse_1.default)(res, {
         data: result,
         message: 'User Registered Successfully',
-        statudeCode: http_status_codes_1.StatusCodes.CREATED,
+        statusCode: http_status_codes_1.StatusCodes.CREATED,
         success: true,
     });
 }));
@@ -44,7 +44,7 @@ const login = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, 
     (0, sendResponse_1.default)(res, {
         data: result,
         message: 'User Logged in Successfully',
-        statudeCode: http_status_codes_1.StatusCodes.OK,
+        statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
     });
 }));
@@ -52,7 +52,7 @@ const changePassword = (0, catchAsync_1.default)((req, res) => __awaiter(void 0,
     const passwordData = __rest(req.body, []);
     const result = yield auth_service_1.authService.changePassword(req.user, passwordData);
     (0, sendResponse_1.default)(res, {
-        statudeCode: http_status_codes_1.StatusCodes.OK,
+        statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
         message: 'Password is updated succesfully!',
         data: result,

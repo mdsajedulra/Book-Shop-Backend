@@ -10,8 +10,18 @@ const notFound_1 = __importDefault(require("./app/middlewares/notFound"));
 const globalErrorHandler_1 = require("./app/middlewares/globalErrorHandler");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-app.use((0, cors_1.default)({
-    origin: 'http://localhost:5173',
+const allowedOrigins = [
+    'http://localhost:5173',
+    'https://book-shop-client-ashy.vercel.app'
+];
+app.use((0, cors_1.default)({ origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        }
+        else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true
 }));
 app.use('/api', routes_1.default);

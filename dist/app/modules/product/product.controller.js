@@ -24,7 +24,7 @@ const createProduct = (0, catchAsync_1.default)((req, res, _next) => __awaiter(v
     const result = yield product_service_1.productServices.createProduct(payload);
     (0, sendResponse_1.default)(res, {
         message: 'product create Seccussfully',
-        statudeCode: http_status_codes_1.StatusCodes.CREATED,
+        statusCode: http_status_codes_1.StatusCodes.CREATED,
         success: true,
         data: result,
     });
@@ -34,7 +34,7 @@ const getProduct = (0, catchAsync_1.default)((req, res, _next) => __awaiter(void
     const result = yield product_service_1.productServices.getProduct(searchTerm);
     (0, sendResponse_1.default)(res, {
         message: 'product fetch Seccussfully',
-        statudeCode: http_status_codes_1.StatusCodes.OK,
+        statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
         data: result,
     });
@@ -44,7 +44,7 @@ const getSpecificProduct = (0, catchAsync_1.default)((req, res, _next) => __awai
     const result = yield product_service_1.productServices.getSpecificProduct(id);
     (0, sendResponse_1.default)(res, {
         message: 'product fetch Seccussfully',
-        statudeCode: http_status_codes_1.StatusCodes.OK,
+        statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
         data: result,
     });
@@ -55,7 +55,7 @@ const deleteProduct = (0, catchAsync_1.default)((req, res, _next) => __awaiter(v
     const result = yield product_service_1.productServices.deleteProduct(id);
     (0, sendResponse_1.default)(res, {
         message: 'product deleted Seccussfully',
-        statudeCode: http_status_codes_1.StatusCodes.OK,
+        statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
         data: result,
     });
@@ -67,7 +67,7 @@ const updateProduct = (0, catchAsync_1.default)((req, res, _next) => __awaiter(v
     const result = yield product_service_1.productServices.updateProduct(id, payload);
     (0, sendResponse_1.default)(res, {
         message: 'product updated Seccussfully',
-        statudeCode: http_status_codes_1.StatusCodes.OK,
+        statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
         data: result,
     });

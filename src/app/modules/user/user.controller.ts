@@ -11,7 +11,7 @@ const createUser = catchAsync(async (req, res, next) => {
 
   sendResponse(res, {
     message: 'user create Seccussfully',
-    statudeCode: StatusCodes.CREATED,
+    statusCode: StatusCodes.CREATED,
     success: true,
     data: result,
   });
@@ -23,7 +23,7 @@ const getAllUser = catchAsync(async (req, res, next) => {
   const result = await userService.getAllUser();
   sendResponse(res, {
     message: 'user get Seccussfully',
-    statudeCode: StatusCodes.OK,
+    statusCode: StatusCodes.OK,
     success: true,
     data: result,
   });
@@ -35,7 +35,7 @@ const blockUser = catchAsync(async (req, res, next) => {
   const result = await userService.blockUser(req.params.userId);
   sendResponse(res, {
     message: 'user block Seccussfully',
-    statudeCode: StatusCodes.OK,
+    statusCode: StatusCodes.OK,
     success: true,
     data: result,
   });
