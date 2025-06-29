@@ -1,0 +1,126 @@
+[33mcommit 7d248e67db710679259e9b427af316c2d3a15cc7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Sun Jun 29 14:55:36 2025 +0600
+
+    first commit
+
+[33mcommit b0cab5a445ef6fce148fa4f669db32b9563f7750[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Sun Apr 13 00:01:30 2025 +0600
+
+    cors change
+
+[33mcommit d16f4ee1745e711bd728ae1739f7624d7305bc4b[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Sat Apr 12 23:20:49 2025 +0600
+
+    readme file add
+
+[33mcommit 8beb2a0222c4e8dcf797628928ac547c221e7529[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Sat Apr 12 23:11:45 2025 +0600
+
+    final touch
+
+[33mcommit 1d411d23d002910c763c306f5232d94cf8c1c0a9[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Sat Apr 12 13:40:13 2025 +0600
+
+    err
+
+[33mcommit 79c4b2791ac6c2a080ff2db569ae60c2b3acd2b3[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Sat Apr 12 13:38:17 2025 +0600
+
+    product delete issue fix
+
+[33mcommit 7b86b3472cdac9ed02b847dbefa2ad6f3629ca2e[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Sat Apr 12 08:15:30 2025 +0600
+
+    cors policy update
+
+[33mcommit e8a63ef4f5ecfbc733b065360b544c5e8083c3b1[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Fri Apr 11 20:25:25 2025 +0600
+
+    final touch
+
+[33mcommit 5e42007c70a0f6eb48d3f81c4519c32a80071554[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Fri Apr 11 15:15:45 2025 +0600
+
+    payment system done
+
+[33mcommit ece76735b61d6b878f1d86dbdb97f30e9166ac9e[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Fri Apr 11 08:16:19 2025 +0600
+
+    email duplication custom error send
+
+[33mcommit bc0151aff0d05ba8ee33670c089a2377a11f2b60[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Thu Apr 10 17:01:15 2025 +0600
+
+    login issue solve
+
+[33mcommit 668c4ff54a3fa2ff0e69859e661814f2464f40a9[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Thu Apr 10 12:50:50 2025 +0600
+
+    working payment method
+
+[33mcommit 9527c49c60cfcdf9188f8808853b93fe0fd2fcc2[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Thu Apr 10 10:51:40 2025 +0600
+
+    role base access (dashboard)
+
+[33mcommit e11592f731cc49b4de9bb033856d658f67a95e8c[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Wed Apr 9 19:42:46 2025 +0600
+
+    .
+
+[33mcommit 5cedc99b1178e36df6c91b7ac921d930596de285[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Wed Apr 9 14:37:21 2025 +0600
+
+    env changes
+
+[33mcommit 55e706f2f11548a1b3972698df799b0ada42df50[m
+Merge: b2e0334 95f4a53
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Wed Apr 9 14:30:55 2025 +0600
+
+    chnages
+
+[33mcommit b2e0334b8e5f50c4195481cbd1affa04de00842f[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Wed Apr 9 14:28:50 2025 +0600
+
+    changes
+
+[33mcommit 95f4a5320cd10d97512dd7d89843f1030299c2e9[m
+Author: Md Sajedul Islam <65823258+mdsajedulra@users.noreply.github.com>
+Date:   Wed Apr 9 14:28:33 2025 +0600
+
+    Delete .env
+
+[33mcommit 8d91778c4c126b693784b576b7c63df6ac0288e4[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Wed Apr 9 12:30:21 2025 +0600
+
+    without payment method
+
+[33mcommit 3e1618b823d1a20b853a6090c42c70d10b819e03[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Wed Apr 9 11:22:11 2025 +0600
+
+    some error fix
+
+[33mcommit 622341d09fff9a97a210499390ae4c0b9063405c[m
+Author: Md Sajedul Islam <mdsajedulra@gmail.com>
+Date:   Wed Apr 9 11:09:21 2025 +0600
+
+    first commit
